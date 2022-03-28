@@ -97,7 +97,7 @@ class Autogallery2(Cog):
             return
         embed = discord.Embed(color=0x4aff00, timestamp=datetime.utcnow())
         for attachment in message.attachments:
-            if attachment.filename.endswith(".png") or attachment.filename.endswith(".jpg") or attachment.filename.endswith(".gif") or attachment.filename.endswith(".mp4") or attachment.filename.endswith(".mov"):
+            if attachment.filename.endswith(".gif") or attachment.filename.endswith(".mp4") or attachment.filename.endswith(".mov"):
                 pass
             else:
                 return
