@@ -12,7 +12,7 @@ from redbot.core.bot import Red
 Cog: Any = getattr(commands, "Cog", object)
 
 
-class Autogallery(Cog):
+class Autogallery2(Cog):
     """
     Auto post pictures into a gallery!
     """
@@ -40,7 +40,7 @@ class Autogallery(Cog):
     @commands.guild_only()
     @checks.admin_or_permissions(manage_guild=True)
     @checks.bot_has_permissions(manage_messages=True)
-    async def addautogallery(
+    async def addautogallery2(
         self, ctx: commands.Context, channel: discord.TextChannel
     ):
         """Add a channel to the list of Gallery channels."""
@@ -55,7 +55,7 @@ class Autogallery(Cog):
     @commands.guild_only()
     @checks.admin_or_permissions(manage_guild=True)
     @checks.bot_has_permissions(manage_messages=True)
-    async def rmautogallery(
+    async def rmautogallery2(
         self, ctx: commands.Context, channel: discord.TextChannel
     ):
         """Remove a channel from the list of Gallery channels."""
@@ -70,7 +70,7 @@ class Autogallery(Cog):
     @commands.guild_only()
     @checks.admin_or_permissions(manage_guild=True)
     @checks.bot_has_permissions(manage_messages=True)
-    async def gallerychannel(self, ctx: commands.Context, channel: discord.TextChannel):
+    async def gallery2channel(self, ctx: commands.Context, channel: discord.TextChannel):
         """Add the gallery channel for auto posting images"""
         autochannel = await self.config.guild(ctx.guild).channel()
         if autochannel is None:
@@ -97,7 +97,7 @@ class Autogallery(Cog):
             return
         embed = discord.Embed(color=0x4aff00, timestamp=datetime.utcnow())
         for attachment in message.attachments:
-            if attachment.filename.endswith(".png") or attachment.filename.endswith(".jpg") or attachment.filename.endswith(".gif"):
+            if attachment.filename.endswith(".png") or attachment.filename.endswith(".jpg") or attachment.filename.endswith(".gif") or attachment.filename.endswith(".mp4") or attachment.filename.endswith(".mov"):
                 pass
             else:
                 return
