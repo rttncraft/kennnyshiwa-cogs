@@ -81,24 +81,24 @@ class Autogallery2(Cog):
         else:
             await ctx.send(f"{channel.mention} is already in the Gallery channels list.")
 
-     @commands.Cog.listener()
-async def on_message(self, message):
-    if message.guild is None:
-        return
-    if message.channel.id not in await self.config.guild(message.guild).channels():
-        return
-    if not message.attachments:
-        return
-    gallery = await self.config.guild(message.guild).channel()
-    if not gallery:
-        return
-    gallerychannel = self.bot.get_channel(gallery)
-    if not gallerychannel.permissions_for(message.guild.me).embed_links:
-        return
-    embed = discord.Embed(color=0x4aff00, timestamp=datetime.utcnow())
-    for attachment in message.attachments:
-        if attachment.filename.lower().endswith((".mp4", ".avi", ".mov")):
-            embed.set_author(name=message.author, icon_url=str(message.author.avatar_url))
-            embed.set_footer(text=message.channel)
-            embed.set_image(url=attachment.url)
-            await gallerychannel.send(embed=embed)
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        if message.guild is None:
+            return
+        if message.channel.id not in await self.config.guild(message.guild).channels():
+            return
+        if not message.attachments:
+            return
+        gallery = await self.config.guild(message.guild).channel()
+        if not gallery:
+            return
+        gallerychannel = self.bot.get_channel(gallery)
+        if not gallerychannel.permissions_for(message.guild.me).embed_links:
+            return
+        embed = discord.Embed(color=0x4aff00, timestamp=datetime.utcnow())
+        for attachment in message.attachments:
+            if attachment.filename.lower().endswith((".mp4", ".avi", ".mov")):
+                embed.set_author(name=message.author, icon_url=str(message.author.avatar_url))
+                embed.set_footer(text=message.channel)
+                embed.set_image(url=attachment.url)
+                await gallerychannel.send(embed=embed)
