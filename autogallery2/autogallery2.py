@@ -14,7 +14,7 @@ Cog: Any = getattr(commands, "Cog", object)
 
 class Autogallery2(Cog):
     """
-    Auto post pictures into a gallery!
+    Auto post videos into a gallery!
     """
 
     __author__ = "kennnyshiwa"
@@ -71,7 +71,7 @@ class Autogallery2(Cog):
     @checks.admin_or_permissions(manage_guild=True)
     @checks.bot_has_permissions(manage_messages=True)
     async def gallery2channel(self, ctx: commands.Context, channel: discord.TextChannel):
-        """Add the gallery channel for auto posting images"""
+        """Add the gallery channel for auto posting videos"""
         autochannel = await self.config.guild(ctx.guild).channel()
         if autochannel is None:
             if channel is not None:
